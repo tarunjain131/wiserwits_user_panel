@@ -37,5 +37,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('performance/data', [UserController::class, 'performanceData'])->name('student.performance.data');
 
     Route::get('/student/bmi', [UserController::class, 'BMIData'])->name('student.bmi');
+    Route::get('/student/doctor-consultation', [UserController::class, 'doctorConsultant'])->name('student.doctor-consultation');
+    Route::get('/student/died-plan-access', [UserController::class, 'diedPlanAccess'])->name('student.died-plan-access');
     Route::get('/student/bmi-chart', [UserController::class,'labReport'])->name('student.bmi-chart');
+    Route::post('/student/doctor-consultation',[UserController::class, 'store'])->name('student.doctor-consultation.store');
+    Route::put('/student/doctor-consultation/{id}',[UserController::class, 'update'])->name('student.doctor-consultation.update');
+    Route::delete('/student/doctor-consultation/{id}',[UserController::class, 'destroy'])->name('student.doctor-consultation.destroy');
+
+
+
 });

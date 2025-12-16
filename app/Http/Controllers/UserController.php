@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Assignment;
+use App\Models\{Assignment,DoctorConsultation};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -139,6 +139,20 @@ class UserController extends Controller
     return view('pages.bmiChart');
  }
 
+ public function diedPlanAccess(){
+    $student = Auth::guard('student')->user();
+    $diedPlan = DB::table('diet_plan')->where('student_id',$student->id)->get();
+    return view('pages.diedPlanAccess',compact('diedPlan'));
+ }
+
+
+public function doctorConsultant(){
+    $student = Auth::guard('student')->user();
+    $doctorConsultations = DB::table('doctor_consultations')->where('student_id',$student->id)->get();
+    return view('pages.doctor_consultant',compact('doctorConsultations'));
+ }
+
+
   public function BMIData(){
     $student = Auth::guard('student')->user(); // get currently logged-in student
 
@@ -158,4 +172,72 @@ class UserController extends Controller
 
     return response()->json($studentData);
 }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'patient_name' => 'required|string|max:255',
+            'doctor_name'  => 'required|string|max:255',
+            'problem'      => 'required|string',
+            'symptoms'     => 'nullable|string',
+            'scheduled_at' => 'required|date'
+        ]);
+
+        DoctorConsultation::create([
+            'student_id'   => Auth::guard('student')->id(),
+            'patient_name' => $request->patient_name,
+            'doctor_name'  => $request->doctor_name,
+            'problem'      => $request->problem,
+            'symptoms'     => $request->symptoms,
+            'scheduled_at' => $request->scheduled_at,
+            'status'       => 'scheduled'
+        ]);
+
+        return redirect()->back()->with('success', 'Consultation request sent successfully!');
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'patient_name' => 'required',
+            'doctor_name' => 'required',
+            'problem' => 'required',
+            'scheduled_at' => 'required|date'
+        ]);
+
+        $consultation = DoctorConsultation::where('id', $id)
+            ->where('student_id', auth()->id())
+            ->firstOrFail();
+
+        $consultation->update($request->only(
+            'patient_name',
+            'doctor_name',
+            'problem',
+            'symptoms',
+            'scheduled_at'
+        ));
+
+        return redirect()->back()->with('success', 'Consultation updated successfully');
+    }
+
+
+    public function destroy($id)
+    {
+        $consultation = DoctorConsultation::where('id', $id)
+            ->where('student_id', auth()->id())
+            ->firstOrFail();
+
+        // Optional: prevent delete if completed
+        if ($consultation->status === 'completed') {
+            return redirect()->back()
+                ->with('error', 'Completed consultations cannot be deleted.');
+        }
+
+        $consultation->delete();
+
+        return redirect()->back()
+            ->with('success', 'Consultation deleted successfully.');
+    }
+
 }

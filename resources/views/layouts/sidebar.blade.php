@@ -37,6 +37,21 @@
                     <i class="fas fa-chalkboard-teacher"></i> Growth & Vital Charts
                 </a>
             </li>
+            <li>
+                <a href="{{ route('student.died-plan-access') }}"
+                class="{{ Request::is('/student/deid-plan-access*') ? 'active' : '' }}"
+                onclick="showPage('deid-plan-access')">
+                    <i class="fas fa-chalkboard-teacher"></i> Died Plan Access
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('student.doctor-consultation') }}"
+                class="{{ Request::is('student/doctor-consultation*') ? 'active' : '' }}">
+                    <i class="fas fa-user-md"></i> Doctor Consultation
+                </a>
+            </li>
+
 
 
 
