@@ -240,4 +240,30 @@ public function doctorConsultant(){
             ->with('success', 'Consultation deleted successfully.');
     }
 
+    public function labReportData(){
+        $student = Auth::guard('student')->user();
+        $diedPlan = DB::table('lab_reports')->where('student_id',$student->id)->get();
+        return view('pages.lab_reports',compact('diedPlan'));
+    }
+
+    public function appointmentTestRemindersList()
+    {
+        $reminders = DB::table('appointment_test_reminders')->where('student_id', auth()->id())
+            ->orderBy('appointment_date', 'desc')
+            ->get();
+
+        return view('pages.appointmentTestRemindersList', compact('reminders'));
+    }
+
+    public function certificates()
+    {
+        $certificates = DB::table('certificates')->where('student_id', auth()->id())
+            ->get();
+
+        return view('pages.certificates', compact('certificates'));
+    }
+
+
+    
+
 }

@@ -2,7 +2,7 @@
 @section('contant')
 <div id="profile">
    <div class="d-flex justify-content-between mb-4">
-     <h2 class="">Died Plan Access</h2>
+     <h2 class="">Doctor Consultation</h2>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#doctorConsultationModal">
         <i class="fas fa-user-md"></i> Request Doctor Consultation
     </button>
