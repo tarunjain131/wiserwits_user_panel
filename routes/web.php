@@ -44,6 +44,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/student/doctor-consultation/{id}',[UserController::class, 'update'])->name('student.doctor-consultation.update');
     Route::delete('/student/doctor-consultation/{id}',[UserController::class, 'destroy'])->name('student.doctor-consultation.destroy');
 
-
+    Route::get('/student/certificates', [UserController::class, 'certificates'])->name('student.certificates');
+    Route::get('/student/lab-report', [UserController::class, 'labReportData'])->name('student.lab-report');
+    Route::get('/student/appointment-test-reminder', [UserController::class, 'appointmentTestRemindersList'])->name('student.appointment-test-reminder');
 
 });

@@ -41,7 +41,23 @@
                 <a href="{{ route('student.died-plan-access') }}"
                 class="{{ Request::is('/student/deid-plan-access*') ? 'active' : '' }}"
                 onclick="showPage('deid-plan-access')">
-                    <i class="fas fa-chalkboard-teacher"></i> Died Plan Access
+                    <i class="fas fa-chalkboard-teacher"></i> Diet Plan Access
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('student.lab-report') }}"
+                class="{{ Request::is('/student/lab-report*') ? 'active' : '' }}"
+                onclick="showPage('lab-report')">
+                    <i class="fas fa-chalkboard-teacher"></i> Lab Report
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('student.appointment-test-reminder') }}"
+                class="{{ Request::is('/student/appointment-test-reminder*') ? 'active' : '' }}"
+                onclick="showPage('appointment-test-reminder')">
+                    <i class="fas fa-chalkboard-teacher"></i>Appointment & Test Reminder
                 </a>
             </li>
 
@@ -49,6 +65,15 @@
                 <a href="{{ route('student.doctor-consultation') }}"
                 class="{{ Request::is('student/doctor-consultation*') ? 'active' : '' }}">
                     <i class="fas fa-user-md"></i> Doctor Consultation
+                </a>
+            </li>
+
+
+            <li>
+                <a href="{{ route('student.certificates') }}"
+                class="{{ Request::is('/student/certificates*') ? 'active' : '' }}"
+                onclick="showPage('certificates')">
+                    <i class="fas fa-chalkboard-teacher"></i> Certificates
                 </a>
             </li>
 
