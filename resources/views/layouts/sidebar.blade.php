@@ -77,14 +77,30 @@
                 </a>
             </li>
 
+            <li>
+                <a href="{{ route('student.workshopcalendar') }}"
+                class="{{ Request::is('/student/workshop-calendar*') ? 'active' : '' }}"
+                onclick="showPage('workshopcalendar')">
+                    <i class="fas fa-chalkboard-teacher"></i>  Workshop & Webinar Calendar 
+                </a>
+            </li>
 
+            <li>
+                <a href="{{ route('gameQuiz') }}"
+                class="{{ Request::is('interactive-quizzes-games*') ? 'active' : '' }}"
+                onclick="showPage('interactive-quizzes-games')">
+                    <i class="fas fa-question-circle"></i> Interactive Quizzes & Games
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
 
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </li>
 
-            <li><a href="{{ route('student.performance') }}" class="{{ Request::is('performance*') ? 'active' : '' }} " onclick="showPage('performance')"><i class="fas fa-chart-line"></i> Performance</a></li>
-            <li><a href="#" class="{{ Request::is('assignments*') ? 'active' : '' }} " onclick="showPage('assignments')"><i class="fas fa-tasks"></i> Assignments</a></li>
-            <li><a href="#" class="{{ Request::is('schedule*') ? 'active' : '' }} " onclick="showPage('schedule')"><i class="fas fa-calendar"></i> Schedule</a></li>
-            <li><a href="#" class="{{ Request::is('messages*') ? 'active' : '' }} " onclick="showPage('messages')"><i class="fas fa-envelope"></i> Messages</a></li>
-            <li><a href="#" class="{{ Request::is('settings*') ? 'active' : '' }} " onclick="showPage('settings')"><i class="fas fa-cog"></i> Settings</a></li>
-            <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
     </div>
