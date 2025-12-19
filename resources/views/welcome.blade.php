@@ -29,8 +29,8 @@
                     <div class="stat-icon text-warning">
                         <i class="fas fa-tasks"></i>
                     </div>
-                    <div class="stat-value">15</div>
-                    <div class="stat-label">Assignments</div>
+                    <div class="stat-value">{{ \DB::table('assignments')->where('student_id', Auth::id())->count()}}</div>
+                    <div class="stat-label">Total Quiz</div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-3">
