@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{UserController, StudentProfileController, AuthController};
+use App\Http\Controllers\{UserController, StudentProfileController, AuthController, CourseController};
 
 /*
 |--------------------------------------------------------------------------
@@ -24,10 +24,14 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    
     Route::get('dashboard',[UserController::class, 'dashboard'])->name('dashboard');
     Route::get('profile',[StudentProfileController::class, 'edit'])->name('profile');
-    Route::get('courses',[UserController::class, 'courses'])->name('courses');
+    // Route::get('courses',[UserController::class, 'courses'])->name('courses');
     Route::get('quiz',[UserController::class, 'quiz'])->name('quiz');
+    Route::get('interactive-quizzes-games',[UserController::class, 'gameQuiz'])->name('gameQuiz');
     Route::post('/assignment/update-status', [UserController::class, 'updateStatus'])->name('assignment.updateStatus');
     Route::get('classroom-report',[UserController::class, 'classRoomReport'])->name('classroom-report');
     Route::get('teacher-feedback',[UserController::class, 'teacherFeedback'])->name('teacher-feedback');
@@ -43,7 +47,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/student/doctor-consultation',[UserController::class, 'store'])->name('student.doctor-consultation.store');
     Route::put('/student/doctor-consultation/{id}',[UserController::class, 'update'])->name('student.doctor-consultation.update');
     Route::delete('/student/doctor-consultation/{id}',[UserController::class, 'destroy'])->name('student.doctor-consultation.destroy');
+    Route::get('/student/workshop-calendar', [UserController::class, 'workshopCalender'])->name('student.workshopcalendar');
+   
+    Route::get('/workshop-events', [UserController::class, 'getEvents'])->name('workshop.events');
+    Route::get('/student/certificates', [UserController::class, 'certificates'])->name('student.certificates');
+    Route::get('/student/lab-report', [UserController::class, 'labReportData'])->name('student.lab-report');
+    Route::get('/student/appointment-test-reminder', [UserController::class, 'appointmentTestRemindersList'])->name('student.appointment-test-reminder');
 
-
+    Route::get('courses/enrolled-courses',[CourseController::class, 'enrolledCourses'])->name('courses.enrolled_courses');
+    Route::get('courses/course-catalog',[CourseController::class, 'courseCatalog'])->name('courses.course_catalog');
 
 });

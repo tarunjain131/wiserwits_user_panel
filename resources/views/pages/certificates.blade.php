@@ -1,32 +1,27 @@
 @extends('layouts.app')
 @section('contant')
 <div id="profile">
-    <h2 class="mb-4">Diet Plan Access</h2>
+    <h2 class="mb-4">Certificates & Digital Badges</h2>
     <div class="row">
-        <table id="diedPlanTable" class="display">
+        <table id="CertificatesTable" class="display">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
-                    <th>Share date</th>
-                    <th>Valid Upto</th>
                     <th>Download</th>
                 </tr>
             </thead>
             <tbody>
-               @if ($diedPlan && count($diedPlan) > 0)
-                    @foreach ($diedPlan as $d)
+               @if ($certificates && count($certificates) > 0)
+                    @foreach ($certificates as $d)
                     <tr>
                         <td>{{ $d->id }}</td>
                         <td>{{ $d->title }}</td>
-                        <td>{{ $d->share_date }}</td>
-                        <td>{{ $d->valid_upto }}</td>
                         <td>
-                            <a href="{{ asset('storage/'.$d->file_path) }}" download>
+                            <a href="{{ asset('storage/'.$d->certificate_file) }}" download>
                                 <i class="fa-solid fa-download"></i>
                             </a>
                         </td>
-
                     </tr>
                     @endforeach
                 @endif
@@ -38,7 +33,7 @@
 
 <script>
     $(document).ready(function () {
-        $('#diedPlanTable').DataTable({
+        $('#CertificatesTable').DataTable({
             pageLength: 10,
             ordering: true,
             searching: true,

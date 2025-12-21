@@ -7,7 +7,9 @@
         <ul class="sidebar-menu">
             <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard*') ? 'active' : '' }}" onclick="showPage('dashboard')"><i class="fas fa-home"></i> Dashboard</a></li>
             <li><a href="{{ route('profile') }}" class="{{ Request::is('profile*') ? 'active' : '' }} " onclick="showPage('profile')"><i class="fas fa-user"></i> My Profile</a></li>
-            <li><a href="{{ route('courses') }}" class="{{ Request::is('courses*') ? 'active' : '' }} " onclick="showPage('courses')"><i class="fas fa-book"></i> My Courses</a></li>
+            {{-- <li><a href="{{ route('courses') }}" class="{{ Request::is('courses*') ? 'active' : '' }} " onclick="showPage('courses')"><i class="fas fa-book"></i> My Courses</a></li> --}}
+            <li><a href="{{ route('courses.enrolled_courses') }}" class="{{ Request::is('courses/enrolled-courses') ? 'active' : '' }} " onclick="showPage('courses.enrolled_courses')"><i class="fas fa-book"></i> Enrolled Courses</a></li>
+            <li><a href="{{ route('courses.course_catalog') }}" class="{{ Request::is('courses/course-catalog') ? 'active' : '' }} " onclick="showPage('courses.course_catalog')"><i class="fas fa-book"></i> Course Catalog</a></li>
             <li>
                 <a href="{{ route('teacher-feedback') }}"
                 class="{{ Request::is('teacher-feedback*') ? 'active' : '' }}"
@@ -41,7 +43,23 @@
                 <a href="{{ route('student.died-plan-access') }}"
                 class="{{ Request::is('/student/deid-plan-access*') ? 'active' : '' }}"
                 onclick="showPage('deid-plan-access')">
-                    <i class="fas fa-chalkboard-teacher"></i> Died Plan Access
+                    <i class="fas fa-chalkboard-teacher"></i> Diet Plan Access
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('student.lab-report') }}"
+                class="{{ Request::is('/student/lab-report*') ? 'active' : '' }}"
+                onclick="showPage('lab-report')">
+                    <i class="fas fa-chalkboard-teacher"></i> Lab Report
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('student.appointment-test-reminder') }}"
+                class="{{ Request::is('/student/appointment-test-reminder*') ? 'active' : '' }}"
+                onclick="showPage('appointment-test-reminder')">
+                    <i class="fas fa-chalkboard-teacher"></i>Appointment & Test Reminder
                 </a>
             </li>
 
@@ -53,13 +71,38 @@
             </li>
 
 
+            <li>
+                <a href="{{ route('student.certificates') }}"
+                class="{{ Request::is('/student/certificates*') ? 'active' : '' }}"
+                onclick="showPage('certificates')">
+                    <i class="fas fa-chalkboard-teacher"></i> Certificates
+                </a>
+            </li>
 
+            <li>
+                <a href="{{ route('student.workshopcalendar') }}"
+                class="{{ Request::is('/student/workshop-calendar*') ? 'active' : '' }}"
+                onclick="showPage('workshopcalendar')">
+                    <i class="fas fa-chalkboard-teacher"></i>  Workshop & Webinar Calendar 
+                </a>
+            </li>
 
-            <li><a href="{{ route('student.performance') }}" class="{{ Request::is('performance*') ? 'active' : '' }} " onclick="showPage('performance')"><i class="fas fa-chart-line"></i> Performance</a></li>
-            <li><a href="#" class="{{ Request::is('assignments*') ? 'active' : '' }} " onclick="showPage('assignments')"><i class="fas fa-tasks"></i> Assignments</a></li>
-            <li><a href="#" class="{{ Request::is('schedule*') ? 'active' : '' }} " onclick="showPage('schedule')"><i class="fas fa-calendar"></i> Schedule</a></li>
-            <li><a href="#" class="{{ Request::is('messages*') ? 'active' : '' }} " onclick="showPage('messages')"><i class="fas fa-envelope"></i> Messages</a></li>
-            <li><a href="#" class="{{ Request::is('settings*') ? 'active' : '' }} " onclick="showPage('settings')"><i class="fas fa-cog"></i> Settings</a></li>
-            <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            <li>
+                <a href="{{ route('gameQuiz') }}"
+                class="{{ Request::is('interactive-quizzes-games*') ? 'active' : '' }}"
+                onclick="showPage('interactive-quizzes-games')">
+                    <i class="fas fa-question-circle"></i> Interactive Quizzes & Games
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </li>
+
         </ul>
     </div>
