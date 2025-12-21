@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\StudentAcademicSession;
-use App\Models\Student;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,9 +13,8 @@ class StudentProfileController extends Controller
     {
         $student = Auth::guard('student')->user();
         $studentAcadmicDetails = StudentAcademicSession::with('class','section')->where('student_id',$student->id)->first();
-        $studentSubscription = Student::where('id',$student->id)->with('studentSubscription.plan')->first();
 
-        return view('pages.profile', compact('student','studentAcadmicDetails','studentSubscription'));
+        return view('pages.profile', compact('student','studentAcadmicDetails'));
     }
 
    public function update(Request $request)
