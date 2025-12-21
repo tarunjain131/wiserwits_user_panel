@@ -8,35 +8,6 @@
 
 
         <ul class="sidebar-menu">
-<<<<<<< HEAD
-            <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard*') ? 'active' : '' }}" onclick="showPage('dashboard')"><i class="fas fa-home"></i> Dashboard</a></li>
-            <li><a href="{{ route('profile') }}" class="{{ Request::is('profile*') ? 'active' : '' }} " onclick="showPage('profile')"><i class="fas fa-user"></i> My Profile</a></li>
-            {{-- <li><a href="{{ route('courses') }}" class="{{ Request::is('courses*') ? 'active' : '' }} " onclick="showPage('courses')"><i class="fas fa-book"></i> My Courses</a></li> --}}
-            <li><a href="{{ route('courses.enrolled_courses') }}" class="{{ Request::is('courses/enrolled-courses') ? 'active' : '' }} " onclick="showPage('courses.enrolled_courses')"><i class="fas fa-book"></i> Enrolled Courses</a></li>
-            <li><a href="{{ route('courses.course_catalog') }}" class="{{ Request::is('courses/course-catalog') ? 'active' : '' }} " onclick="showPage('courses.course_catalog')"><i class="fas fa-book"></i> Course Catalog</a></li>
-            <li>
-                <a href="{{ route('teacher-feedback') }}"
-                class="{{ Request::is('teacher-feedback*') ? 'active' : '' }}"
-                onclick="showPage('teacher-feedback')">
-                    <i class="fas fa-comments"></i> Teacher Feedback
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('quiz') }}"
-                class="{{ Request::is('quiz*') ? 'active' : '' }}"
-                onclick="showPage('quiz')">
-                    <i class="fas fa-question-circle"></i> Quiz
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('classroom-report') }}"
-                class="{{ Request::is('classroom-report*') ? 'active' : '' }}"
-                onclick="showPage('classroom-report')">
-                    <i class="fas fa-chalkboard-teacher"></i> Classroom Report
-                </a>
-            </li>
-=======
->>>>>>> arun
 
               <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard*') ? 'active' : '' }}" onclick="showPage('dashboard')"><i class="fas fa-home"></i> Dashboard</a></li>
         <li><a href="{{ route('profile') }}" class="{{ Request::is('profile*') ? 'active' : '' }} " onclick="showPage('profile')"><i class="fas fa-user"></i> My Profile</a></li>
@@ -49,7 +20,7 @@
         </a>
 
         <ul class="collapse" id="educationMenu">
-            <li><a href="{{ route('courses') }}"><i class="fas fa-book"></i> My Courses</a></li>
+            {{-- <li><a href="{{ route('courses') }}"><i class="fas fa-book"></i> My Courses</a></li> --}}
             <li><a href="{{ route('teacher-feedback') }}"><i class="fas fa-comments"></i> Teacher Feedback</a></li>
             <li><a href="{{ route('quiz') }}"><i class="fas fa-question-circle"></i> Quiz</a></li>
             <li><a href="{{ route('classroom-report') }}"><i class="fas fa-chalkboard"></i> Classroom Report</a></li>
