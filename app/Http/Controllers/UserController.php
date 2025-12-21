@@ -58,7 +58,7 @@ class UserController extends Controller
     }
 
     public function teacherFeedback(){
-        $teacher_feedbacks = DB::table('teacher_feedbacks')->get();
+        $teacher_feedbacks = DB::table('teacher_feedbacks')->where('student_id', Auth::id())->get();
         return view('pages.teacherFeedback',compact('teacher_feedbacks'));
     }
 
