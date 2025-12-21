@@ -17,20 +17,6 @@ class AuthController extends Controller
     // Handle login
     public function login(Request $request)
     {
-        // Validate request
-        // $credentials = $request->validate([
-        //     'email' => ['required', 'email'],
-        //     'password' => ['required'],
-        // ]);
-
-        // $student = Student::where('email',$request['email'])->first();
-        // dd($student->password);
-        // if ($student->password !== md5($request->password)) {
-        //     return back()->withErrors(['password' => 'Invalid password']);
-        // }
-
-
-
         // Attempt login
        if (Auth::guard('student')->attempt([
             'email' => $request->email,

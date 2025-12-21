@@ -23,6 +23,7 @@ class UserController extends Controller
     public function quiz(){
         $student = Auth::guard('student')->user();
        $quiz = Assignment::where('status', 'active')
+                ->where('quiz_for','quiz')
                 ->where('student_id', $student->id)
                 ->orderByRaw("
                     CASE 
@@ -35,6 +36,25 @@ class UserController extends Controller
                 ->get();
 
         return view('pages.quiz',compact('quiz'));
+    }
+
+
+    public function gameQuiz(){
+        $student = Auth::guard('student')->user();
+       $quiz = Assignment::where('status', 'active')
+                ->where('quiz_for','game_quiz')
+                ->where('student_id', $student->id)
+                ->orderByRaw("
+                    CASE 
+                        WHEN deadline < NOW() THEN 2      -- expired → last
+                        WHEN assignment_status = 'pending' THEN 1
+                        ELSE 0
+                    END
+                ")
+                ->orderBy('deadline', 'ASC')  // nearest deadline first
+                ->get();
+
+        return view('pages.game_quiz',compact('quiz'));
     }
 
     public function teacherFeedback(){
@@ -75,8 +95,7 @@ class UserController extends Controller
     $query = DB::table('student_data_performances as sdp')
         ->join('questionnaires as q', 'q.id', '=', 'sdp.questionnaires_id')
         ->where('q.student_id', $studentId);
-    // dd($query);
-    // 🔹 Date filters
+
     if ($type === 'weekly') {
         $query->whereBetween('sdp.created_at', [
             now()->startOfWeek(),
@@ -263,6 +282,22 @@ public function doctorConsultant(){
         return view('pages.certificates', compact('certificates'));
     }
 
+    public function workshopCalender(){
+        return view('pages.workshop_calendar');
+    }
+
+    public function getEvents()
+    {
+        $events = DB::table('workshop_webinar_calendar')->where('student_id', auth()->id())
+            ->select(
+                'title',
+                DB::raw('start_date as start'),
+                'description'
+            )
+            ->get();
+
+        return response()->json($events);
+    }
 
     
 
