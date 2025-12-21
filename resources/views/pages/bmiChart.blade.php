@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('contant')
 
-<div id="bmi-chart'">
+<div id="bmi-chart p-4 " style="background-color: #ffff; padding: 17px;">
     <h2 class="mb-4">Growth Chart (Height, Weight, BMI)</h2>
     <div class="row">
         <!-- LEFT PROFILE CARD -->

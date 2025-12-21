@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('contant')
-<div id="profile">
+<div id="profile" style="background-color: #ffff; padding: 17px;">
    <div class="d-flex justify-content-between mb-4">
      <h2 class="">Doctor Consultation</h2>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#doctorConsultationModal">
