@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('contant')
-<div id="profile">
+<div id="profile" style="background-color: #ffff; padding: 17px;">
     <h2 class="mb-4">Lab Reports</h2>
     <div class="row">
         <table id="diedPlanTable" class="display">

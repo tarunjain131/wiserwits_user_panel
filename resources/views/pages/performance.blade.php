@@ -8,7 +8,9 @@
         <div class="row" id="statCards">
         </div>
          <hr>
+        <div style="background-color: #ffff; padding: 17px;">
 
+        
         <select id="filter" class="form-select w-25 mb-4">
             <option value="weekly">Weekly</option>
             <option value="monthly" selected>Monthly</option>
@@ -20,6 +22,8 @@
 
         {{-- INDIVIDUAL SCORES --}}
         <div class="row mt-4" id="scoreCards"></div>
+
+        </div>
 
     </div>
 </div>

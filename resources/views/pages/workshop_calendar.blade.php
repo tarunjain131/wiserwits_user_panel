@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('contant')
-<div id="profile">
+<div id="profile" style="background-color: #ffff; padding: 17px;">
     <h2 class="mb-4">WorkShop Calender</h2>
 <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css' rel='stylesheet' />
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script>
-<div class="content-wrapper" style="min-height: 345px;">
+<div class="content-wrapper" style="min-height: 345px;" style="background-color: #ffff; padding: 17px;">
     <div id='calendar'></div>
 </div>
 

@@ -94,18 +94,29 @@
                        
 
                         <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label">Phone Number</label>
-                                <input type="tel" name="phone"
-                                       class="form-control"
-                                       value="{{ old('phone', $student->phone) }}">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Alternate Phone</label>
-                                <input type="text" name="alternate_phone"
-                                    class="form-control"
-                                    value="{{ old('alternate_phone', $student->alternate_phone) }}">
-                            </div>
+                         <div class="col-md-6">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" name="phone"
+                                class="form-control"
+                                value="{{ old('phone', $student->phone) }}"
+                                pattern="[0-9]{10}"
+                                maxlength="10"
+                                minlength="10"
+                                required
+                                title="Enter 10 digit phone number">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Alternate Phone</label>
+                            <input type="tel" name="alternate_phone"
+                                class="form-control"
+                                value="{{ old('alternate_phone', $student->alternate_phone) }}"
+                                pattern="[0-9]{10}"
+                                maxlength="10"
+                                minlength="10"
+                                title="Enter 10 digit phone number">
+                        </div>
+
 
                             <div class="col-md-6">
                                 <label class="form-label">Date of Birth</label>

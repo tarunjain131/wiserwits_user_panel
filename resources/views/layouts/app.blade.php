@@ -14,8 +14,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
-
-
+   <style>
+    h2 {
+        color: #FDB241 !important;
+    }
+</style>
 </head>
 <body>
     @if(session('success'))
@@ -45,16 +48,44 @@
             @php
                 $student = Auth::guard('student')->user();
             @endphp
-            <div class="user-menu">
-                <i class="fas fa-bell fa-lg text-muted"></i>
-                 <img
-                    src="{{ $student->profile_image
-                                ? asset('storage/'.$student->profile_image)
-                                : 'https://ui-avatars.com/api/?name='.$student->first_name.'+'.$student->last_name }}"
-                            class="user-avatar" alt="User"
-                        >
-                 <span class="d-none d-md-inline">{{$student->first_name }}</span>
-            </div>
+            <div class="dropdown user-menu">
+
+    <a class="dropdown-toggle d-flex align-items-center " style="color: #1A2658" href="#" role="button" data-bs-toggle="dropdown">
+        <img
+            src="{{ $student->profile_image
+                ? asset('storage/'.$student->profile_image)
+                : 'https://ui-avatars.com/api/?name='.$student->first_name.'+'.$student->last_name }}"
+            class="user-avatar"
+            alt="User"
+        >
+        <span class="ms-2 d-none d-md-inline">{{ $student->first_name }}</span>
+    </a>
+
+    <ul class="dropdown-menu dropdown-menu-end">
+
+        {{-- Profile --}}
+        <li>
+            <a class="dropdown-item" href="{{ route('profile') }}">
+                <i class="fa fa-user me-2"></i> Profile
+            </a>
+        </li>
+
+        <li><hr class="dropdown-divider"></li>
+
+        {{-- Logout --}}
+        <li>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="dropdown-item text-danger">
+                    <i class="fa fa-power-off me-2"></i> Logout
+                </button>
+            </form>
+        </li>
+
+    </ul>
+
+</div>
+
         </div>
 
         <!-- Content Area -->
