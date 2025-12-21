@@ -7,7 +7,9 @@
         <ul class="sidebar-menu">
             <li><a href="{{ route('dashboard') }}" class="{{ Request::is('dashboard*') ? 'active' : '' }}" onclick="showPage('dashboard')"><i class="fas fa-home"></i> Dashboard</a></li>
             <li><a href="{{ route('profile') }}" class="{{ Request::is('profile*') ? 'active' : '' }} " onclick="showPage('profile')"><i class="fas fa-user"></i> My Profile</a></li>
-            <li><a href="{{ route('courses') }}" class="{{ Request::is('courses*') ? 'active' : '' }} " onclick="showPage('courses')"><i class="fas fa-book"></i> My Courses</a></li>
+            {{-- <li><a href="{{ route('courses') }}" class="{{ Request::is('courses*') ? 'active' : '' }} " onclick="showPage('courses')"><i class="fas fa-book"></i> My Courses</a></li> --}}
+            <li><a href="{{ route('courses.enrolled_courses') }}" class="{{ Request::is('courses/enrolled-courses') ? 'active' : '' }} " onclick="showPage('courses.enrolled_courses')"><i class="fas fa-book"></i> Enrolled Courses</a></li>
+            <li><a href="{{ route('courses.course_catalog') }}" class="{{ Request::is('courses/course-catalog') ? 'active' : '' }} " onclick="showPage('courses.course_catalog')"><i class="fas fa-book"></i> Course Catalog</a></li>
             <li>
                 <a href="{{ route('teacher-feedback') }}"
                 class="{{ Request::is('teacher-feedback*') ? 'active' : '' }}"

@@ -41,7 +41,8 @@
                    <p><b>Class: </b> {{ $studentAcadmicDetails->class->name ?? 'N/L'}}</p>
                    <p><b>Class Code: </b> {{ $studentAcadmicDetails->class->code ?? 'N/L'}}</p>
                    <p><b>Section: </b> {{ ucfirst($studentAcadmicDetails->section->name) ?? 'N/L'}}</p>
-                   <p><b>Status: </b> {{ ucfirst($studentAcadmicDetails->class->status) ?? 'N/L'}}</p>
+                   <p><b>Status: </b> {{ ucfirst($student->status) ?? 'N/L'}}</p>
+                   <p><b>Plan: </b> {{$studentSubscription->studentSubscription->plan->name ?? 'N/L'}}</p>
                 </div>  
             </div>
         </div>

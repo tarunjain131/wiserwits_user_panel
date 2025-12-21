@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Course;
+use App\Models\Feature;
 
 class Plan extends Model
 {
@@ -18,14 +20,22 @@ class Plan extends Model
     ];
 
     // Relation with features
+    // public function featureList()
+    // {
+    //     return $this->belongsToMany(Feature::class, 'id', 'features');
+    // }
     public function featureList()
     {
-        return $this->belongsToMany(Feature::class, 'id', 'features');
+        return Feature::whereIn('id', $this->features ?? []);
     }
 
+    // public function courseList()
+    // {
+    //     return $this->belongsToMany(Feature::class, 'id', 'course_id');
+    // }
     public function courseList()
     {
-        return $this->belongsToMany(Feature::class, 'id', 'course_id');
+        return Course::whereIn('id', $this->course_id ?? []);
     }
 
 }
