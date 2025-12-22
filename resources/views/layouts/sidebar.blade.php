@@ -20,10 +20,10 @@
         </a>
 
         <ul class="collapse" id="educationMenu">
-            {{-- <li><a href="{{ route('courses') }}"><i class="fas fa-book"></i> My Courses</a></li> --}}
-            <li><a href="{{ route('teacher-feedback') }}"><i class="fas fa-comments"></i> Teacher Feedback</a></li>
-            <li><a href="{{ route('quiz') }}"><i class="fas fa-question-circle"></i> Quiz</a></li>
-            <li><a href="{{ route('classroom-report') }}"><i class="fas fa-chalkboard"></i> Classroom Report</a></li>
+            <li><a href="#"><i class="fas fa-book"></i> My Courses</a></li>
+            <li><a href="#"><i class="fas fa-comments"></i> Teacher Feedback</a></li>
+            <li><a href="#"><i class="fas fa-question-circle"></i> Quiz</a></li>
+            <li><a href="#"><i class="fas fa-chalkboard"></i> Classroom Report</a></li>
         </ul>
     </li>
 
@@ -42,16 +42,49 @@
     </li>
 
     <!-- ========= ACTIVITIES & CERTIFICATES ========= -->
-    <li class="sidebar-group">
-        <a data-bs-toggle="collapse" href="#activityMenu" role="button" aria-expanded="false">
+    <li class="sidebar-group {{ Request::is('student/certificates*', 'student/workshopcalendar*', 'student/performance*', 'gameQuiz*') ? 'active' : '' }}">
+        <a data-bs-toggle="collapse" href="#activityMenu" role="button" aria-expanded="{{ Request::is('student/certificates*', 'student/workshopcalendar*', 'student/performance*', 'gameQuiz*') ? 'true' : 'false' }}">
             <i class="fas fa-trophy"></i> Activities
         </a>
+        <ul class="collapse {{ Request::is('student/certificates*', 'student/workshopcalendar*', 'student/performance*', 'gameQuiz*') ? 'show' : '' }}"
+            id="activityMenu">
+            <li>
+                <a href="{{ route('student.certificates') }}" class="{{ Request::is('student/certificates*') ? 'active' : '' }}">
+                    <i class="fas fa-certificate"></i> Certificates
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('student.workshopcalendar') }}" class="{{ Request::is('student/workshopcalendar*') ? 'active' : '' }}">
+                    <i class="fas fa-calendar"></i> Workshop Calendar
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('student.performance') }}" class="{{ Request::is('student/performance*') ? 'active' : '' }}">
+                    <i class="fas fa-chart-area"></i> Performance
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('gameQuiz') }}" class="{{ Request::is('gameQuiz*') ? 'active' : '' }}">
+                    <i class="fas fa-gamepad"></i> Games
+                </a>
+            </li>
+        </ul>
+    </li>
 
-        <ul class="collapse" id="activityMenu">
-            <li><a href="{{ route('student.certificates') }}"><i class="fas fa-certificate"></i> Certificates</a></li>
-            <li><a href="{{ route('student.workshopcalendar') }}"><i class="fas fa-calendar"></i> Workshop Calendar</a></li>
-            <li><a href="{{ route('student.performance') }}"><i class="fas fa-chart-area"></i> Performance</a></li>
-            <li><a href="{{ route('gameQuiz') }}"><i class="fas fa-gamepad"></i> Games</a></li>
+    <!-- ========= SKILL COURSES ========= -->
+    <li class="sidebar-group">
+        <a data-bs-toggle="collapse" href="#skillCoursesMenu" role="button" aria-expanded="false">
+            <i class="fas fa-book-reader"></i> Skill Courses
+        </a>
+
+        <ul class="collapse" id="skillCoursesMenu">
+            <li><a href="{{ route('courses.enrolled_courses')}}"><i class="fas fa-certificate"></i>Enrolled Courses</a></li>
+            <li><a href="{{ route('courses.course_catalog')}}"><i class="fas fa-calendar"></i>Course Catalog</a></li>
+            <li><a href="#"><i class="fas fa-chart-area"></i> Live & On-demand Sessions</a></li>
+            <li><a href="#"><i class="fas fa-certificate"></i> Certificates</a></li>
+            <li><a href="#"><i class="fas fa-star"></i> Feedback & Ratings</a></li>
+            <li><a href="{{ route('courses.language_course') }}"><i class="fas fa-book"></i>Languages</a></li>
+            <li><a href="#"><i class="fas fa-calendar"></i>Wellness Session Calendar</a></li>
         </ul>
     </li>
 

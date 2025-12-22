@@ -56,5 +56,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('courses/enrolled-courses',[CourseController::class, 'enrolledCourses'])->name('courses.enrolled_courses');
     Route::get('courses/course-catalog',[CourseController::class, 'courseCatalog'])->name('courses.course_catalog');
+    Route::get('courses/language',[CourseController::class, 'languageCourse'])->name('courses.language_course');
 
 });

@@ -12,7 +12,7 @@ class CourseController extends Controller
     public function enrolledCourses(){
         $student_id = Auth::guard('student')->id();
         $student = Student::where('id',$student_id)->with('studentSubscription.plan')->first();
-        $courses = $student->studentSubscription->plan->course_list;
+        $courses = isset($student->studentSubscription) ? $student->studentSubscription->plan->course_list : [];
         return view('pages.courses', compact('courses'));
     }
 
@@ -20,6 +20,11 @@ class CourseController extends Controller
         $courses = Course::get();
         $plans = Plan::get();
         return view('pages.courseCatalog', compact('courses','plans'));
+    }
+
+    public function languageCourse(){
+        $courses = Course::where('type_of_course','language')->get();
+        return view('pages.languageCourses', compact('courses'));
     }
 
 
