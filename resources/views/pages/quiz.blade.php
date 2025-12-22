@@ -2,7 +2,7 @@
 @section('contant')
 
 <div id="profile">
-    <h2 class="mb-4"> Interactive Quizzes & Games</h2>
+    <h2 class="mb-4">Quiz Student</h2>
     <div class="row">
         <!-- LEFT PROFILE CARD -->
         @if (count($quiz) > 0)
@@ -12,7 +12,8 @@
                     <div class="card-body text-start">
                         <small><b>Quiz Title:</b> {{ $item->title }}</small><br>
 
-                          @php
+                        {{-- Deadline check --}}
+                        @php
                             $deadlineExpired = \Carbon\Carbon::now()->gt(
                                 \Carbon\Carbon::parse($item->deadline)
                             );
