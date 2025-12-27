@@ -57,7 +57,22 @@
                             {{ \Carbon\Carbon::parse($item->deadline)->format('d M Y, h:i A') }}
                         </small><br>
 
-                        <small><b>Description:</b> {{ $item->description }}</small><br>
+                          <small>
+                        <b>Description:</b>
+                        <span class="short-desc">
+                            {{ \Illuminate\Support\Str::limit($item->description, 50) }}
+                        </span>
+
+                        <span class="full-desc d-none">
+                            {{ $item->description }}
+                        </span>
+
+                        @if(strlen($item->description) > 50)
+                            <a href="javascript:void(0)" class="read-more text-yello fw-bold">
+                                Read more
+                            </a>
+                        @endif
+                        </small><br>
                     </div>
                 </div>
             </div>

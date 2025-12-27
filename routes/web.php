@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{UserController, StudentProfileController, AuthController, CourseController};
+use App\Http\Controllers\{UserController,ClassChangeController, StudentProfileController, AuthController, CourseController};
 
 /*
 |--------------------------------------------------------------------------
@@ -58,4 +58,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('courses/course-catalog',[CourseController::class, 'courseCatalog'])->name('courses.course_catalog');
     Route::get('courses/language',[CourseController::class, 'languageCourse'])->name('courses.language_course');
 
+    Route::get('/class-change', [ClassChangeController::class, 'index'])->name('student.class-change.index');
+    Route::post('/class-change', [ClassChangeController::class, 'store'])->name('student.class-change.store');
+    Route::put('/class-change/{id}', [ClassChangeController::class, 'update'])->name('student.class-change.update');
+    Route::delete('/class-change/{id}', [ClassChangeController::class, 'destroy'])->name('student.class-change.destroy');
 });

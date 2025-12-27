@@ -72,8 +72,11 @@ body {
 .sidebar-menu a:hover,
 .sidebar-menu a.active {
     background: rgba(255, 255, 255, 0.2);
-    color:#FDB241;
+    color:#F0C227 ;
     transform: translateX(5px);
+}
+.text-yello{
+      color:#F0C227 ;
 }
 
 .sidebar-menu a i {
@@ -87,7 +90,7 @@ body {
     min-height: 100vh;
     background: #f8f9fa;
     transition: all 0.3s ease;
-    background-color: #1a0f5c !important;
+    background-color: #1A2658 !important; 
 }
 
 /* Top Navigation */

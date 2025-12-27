@@ -18,9 +18,14 @@
                         <td>{{ $d->id }}</td>
                         <td>{{ $d->title }}</td>
                         <td>
-                            <a href="{{ asset('storage/'.$d->certificate_file) }}" download>
+                            @php
+                               $imageUrl = 'https://wiserwits.in/admin_panel/public/uploads/courses/images/oCC6uCXpcawPDPpGKAcKRAGqU1wXovMGRKvy5Hsw.png';
+                            @endphp
+                            <a onclick="downloadImage('{{ $imageUrl }}','image.png')"><i class="fa-solid fa-download"></i></a>
+
+                            {{-- <a href="" download>
                                 <i class="fa-solid fa-download"></i>
-                            </a>
+                            </a> --}}
                         </td>
                     </tr>
                     @endforeach
@@ -32,6 +37,17 @@
 
 
 <script>
+
+    function downloadImage(url, name="text") {
+    fetch(url)
+      .then(r => r.blob())
+      .then(b => {
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(b);
+        a.download = name;
+        a.click();
+      });
+}
     $(document).ready(function () {
         $('#CertificatesTable').DataTable({
             pageLength: 10,

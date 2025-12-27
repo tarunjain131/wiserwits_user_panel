@@ -20,8 +20,12 @@
                         @endphp
 
                         <small><b>Quiz Link:</b>
-                            @if($deadlineExpired)
+                            @if($deadlineExpired )
                                 <span class="text-danger">Deadline expired</span>
+                            @elseif($item->assignment_status =='submitted')
+                                 <a href="javascript:void(0)"class=" text-success fw-bold">
+                                    Quiz Link
+                                </a>
                             @else
                                 <a href="javascript:void(0)"
                                     class="quiz-link text-primary fw-bold"
@@ -58,7 +62,22 @@
                             {{ \Carbon\Carbon::parse($item->deadline)->format('d M Y, h:i A') }}
                         </small><br>
 
-                        <small><b>Description:</b> {{ $item->description }}</small><br>
+                       <small>
+                        <b>Description:</b>
+                        <span class="short-desc">
+                            {{ \Illuminate\Support\Str::limit($item->description, 50) }}
+                        </span>
+
+                        <span class="full-desc d-none">
+                            {{ $item->description }}
+                        </span>
+
+                        @if(strlen($item->description) > 50)
+                            <a href="javascript:void(0)" class="read-more text-yello fw-bold">
+                                Read more
+                            </a>
+                        @endif
+                        </small><br>
                     </div>
                 </div>
             </div>
@@ -73,6 +92,7 @@
 
 
 <script>
+
 $(document).on('click', '.quiz-link', function () {
     let quizId = $(this).data('id');
     let quizLink = $(this).data('link');

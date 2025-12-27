@@ -16,9 +16,19 @@
     <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
    <style>
     h2 {
-        color: #FDB241 !important;
+        color: #F0C227 !important;
     }
 </style>
+   <script>
+     $(document).on('click', '.read-more', function () {
+            let parent = $(this).closest('small');
+
+            parent.find('.short-desc').toggleClass('d-none');
+            parent.find('.full-desc').toggleClass('d-none');
+
+            $(this).text($(this).text() === 'Read more' ? 'Read less' : 'Read more');
+        });
+   </script>
 </head>
 <body>
     @if(session('success'))
@@ -180,5 +190,6 @@
                 }
             }
         });
+       
     </script>
 </body>

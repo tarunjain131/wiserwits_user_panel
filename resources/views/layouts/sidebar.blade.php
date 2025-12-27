@@ -24,6 +24,8 @@
             <li><a href="{{ route('teacher-feedback') }}"><i class="fas fa-comments"></i> Teacher Feedback</a></li>
             <li><a href="{{ route('quiz') }}"><i class="fas fa-question-circle"></i> Quiz</a></li>
             <li><a href="{{ route('classroom-report') }}"><i class="fas fa-chalkboard"></i> Classroom Report</a></li>
+            <li><a href="{{ route('student.class-change.index') }}"><i class="fas fa-clock"></i>Class Time Change</a></li>
+       
         </ul>
     </li>
 
